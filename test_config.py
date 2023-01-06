@@ -1,0 +1,9 @@
+# minute = 0 # 00 PST
+hour = "18:00" # 18 # 6:00 PM PST
+# days = [0, 2, 4] # Mon, Wed, Fri
+# tabs = [9, 11] # this is nothing anymore.
+time_in_meeting = 60*1.75*60 # 60 min * 1.75 hours * 60 seconds
+meeting_link = "link"
+user_id = "email@gmail.com"
+password = "1234567890"
+nameTag = "Joe"
