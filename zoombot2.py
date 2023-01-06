@@ -16,7 +16,7 @@ def run(playwright: Playwright) -> None:
     print('Waiting for load state')
     page.wait_for_load_state()
     print('FYI: I put your name as:', config.nameTag)
-    page.get_by_placeholder("Your Name").fill("Jann Arellano") # Fill name
+    page.get_by_placeholder("Your Name").fill(config.nameTag) # Fill name
     
     # page.get_by_role("button", name="Join").click() # Join session
     page.locator('//button[@id="joinBtn"]').click() # ^ Join session by xpath
@@ -31,7 +31,7 @@ def run(playwright: Playwright) -> None:
     # page.get_by_role("tab", name="Computer Audio").locator("div").click() # Navigates to the Computer Audio tab
     
     print("Joined audio")
-    page.locator('//*[@id="voip-tab"]/div/button').click() # Joins audio by xpath
+    page.locator('//*[@id="voip-tab"]/div/button').click(timeout=0) # Joins audio by xpath
     # page.get_by_role("button", name="Join Audio by Computer").click() # Joins audio
     
     print("We just kool aid manned the doors and exited the meeting hehe!!!")
