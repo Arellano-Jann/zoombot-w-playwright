@@ -10,6 +10,7 @@ https://playwright.dev/python/docs/intro
 6. Creating a log of the transcription
 7. I wonder if you can record in headless. I don't think so though. Counter to this is to take a screenshot every few seconds and play those images in sequential order. Put it into a folder of course.x
 8. Access transcription/log and if name has been said, issue a wakeup call or playa prerecorded "idk"
+9. Waiting room logic
 
 
 Ubuntu Setup

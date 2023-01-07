@@ -7,8 +7,10 @@ in_seconds = 1000 # aux variable to convert milli to seconds
 
 # adds in audio controls
 def run(playwright: Playwright) -> None:
+    ### Joining
+    
     # browser = playwright.chromium.launch(headless=False, slow_mo=5000)
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
     
@@ -16,6 +18,7 @@ def run(playwright: Playwright) -> None:
     page.goto(config.meeting_link) # Go to link
     print('Joined from browser and yeeting myself in...')
     page.get_by_role("button", name="Join from Your Browser").click() # Join from browser
+    # page.locator('//a[@id="zoom-ui-frame"]/div[2]/div/div[2]/h3[2]/span/a') # ^ Join from browser xpath version
     
     print('Waiting for load state')
     page.wait_for_load_state()
@@ -27,6 +30,8 @@ def run(playwright: Playwright) -> None:
     print("Lol the join button was clicked... Hopefully we don't get caught playing hooky... Waiting for loading now")
     page.wait_for_load_state()
     
+    ### Audio
+    
     # page.get_by_role("button", name="More audio controls").click() # Bottom left more controls to leave audio
     # page.get_by_role("menuitem", name="Leave Computer Audio").click() # Leaves audio
     
@@ -35,15 +40,25 @@ def run(playwright: Playwright) -> None:
     # page.get_by_role("tab", name="Computer Audio").locator("div").click() # Navigates to the Computer Audio tab
     
     print("Joining audio...")
-    page.locator('//*[@id="voip-tab"]/div/button').click(timeout=120*in_seconds) # Joins audio by xpath
+    # Div for audio wrapper
+    # xpath = //*[@id="foot-bar"]/div[1]/div[1]
+    # selector = #foot-bar > div:nth-child(1) > div:nth-child(1)
+    page.screenshot(path="screenshots/1.png")
+    page.locator('//*[@id="voip-tab"]/div/button').click(timeout=120*in_seconds) # Joins audio through big blue button by xpath
     # page.get_by_role("button", name="Join Audio by Computer").click() # Joins audio
     print('Joined audio. I can now hear the screams of terror')
+    page.screenshot(path="screenshots/2.png")
     page.wait_for_load_state() # Don't know why this is here but fuck it we ball
     
     print('Testing audio thing')
+    page.screenshot(path="screenshots/3.png")
     page.wait_for_timeout(10*in_seconds) 
+    page.screenshot(path="screenshots/4.png")
+    
     # might have a bug where browser has a popup asking for mic usage 
     # https://playwright.dev/python/docs/dialogs#alert-confirm-prompt-dialogs
+    
+    ### Meeting
     
     # Time in meeting. Could use this module for logic in leaving the meeting early etc. For example: polls, creating a recording, checking sound.
     print(config.time_in_meeting*in_seconds, ' seconds until leaving the meeting')
