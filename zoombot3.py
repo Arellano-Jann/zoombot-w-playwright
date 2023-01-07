@@ -13,7 +13,7 @@ def run(playwright: Playwright) -> None:
     page.get_by_placeholder("Your Name").fill("Jann Arellano")
     page.get_by_role("button", name="Join").click()
     
-    # Video Testing
+    # Audio Testing
     page.locator("#multi-view-video").dblclick(position={"x":310,"y":101}) # Click on random position
     page.locator("#multi-view-video").click(position={"x":706,"y":83}) # Click on random Position
     page.get_by_text("Jann I ArellanoJann I Arellano").click() # Click on main tab name
@@ -24,6 +24,8 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("button", name="unmute my microphone").click() # Unmute mic
     page.get_by_role("button", name="More audio controls").click() # Click on "^" icon for more options
     page.get_by_role("button", name="More audio controls").click() # Click again for some reason
+    page.get_by_role("tablist").get_by_role("button", name="close").press("Tab") # Tab to join audio by computer. Probably a more reliable way to do this
+    page.get_by_role("button", name="Join Audio by Computer").press("Enter") # Enter button to join
     
     # Polls
     page.locator("div").filter(has_text="Polls/Quizzes2 Question1. Untitled Question (Single Choice) *requiredChoice 1Cho").nth(2).click() # ]Click on box
