@@ -1,7 +1,9 @@
+# Main Script
+
 import config
 from playwright.sync_api import Playwright, sync_playwright, expect
 
-in_seconds = 1000
+in_seconds = 1000 # aux variable to convert milli to seconds
 
 # adds in audio controls
 def run(playwright: Playwright) -> None:
@@ -36,11 +38,16 @@ def run(playwright: Playwright) -> None:
     page.locator('//*[@id="voip-tab"]/div/button').click(timeout=120*in_seconds) # Joins audio by xpath
     # page.get_by_role("button", name="Join Audio by Computer").click() # Joins audio
     print('Joined audio. I can now hear the screams of terror')
+    page.wait_for_load_state() # Don't know why this is here but fuck it we ball
     
-    Print('Testing audio thing')
-    page.wait_for_timeout(10*in_seconds)
+    print('Testing audio thing')
+    page.wait_for_timeout(10*in_seconds) 
     # might have a bug where browser has a popup asking for mic usage 
     # https://playwright.dev/python/docs/dialogs#alert-confirm-prompt-dialogs
+    
+    # Time in meeting. Could use this module for logic in leaving the meeting early etc. For example: polls, creating a recording, checking sound.
+    print(config.time_in_meeting*in_seconds, ' seconds until leaving the meeting')
+    page.wait_for_timeout(config.time_in_meeting*in_seconds) # Time(out) until leaving the meeting executes
     
     print("We just kool aid manned the doors and exited the meeting hehe!!!")
     page.get_by_role("button", name="Leave").click() # Leaves the meeting

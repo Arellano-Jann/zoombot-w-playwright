@@ -2,7 +2,7 @@
 https://playwright.dev/python/docs/intro
 
 ## To add
-1. Time in meeting
+1. ~~Time in meeting~~
 2. Popup handling. Unsure if it ACTUALLY does it or just says it does. Screenshot in headless to debug.
 3. Handling polls
 4. Checking sound (maybe by network) to see if there's people talking
