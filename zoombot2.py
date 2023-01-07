@@ -1,6 +1,8 @@
 import config
 from playwright.sync_api import Playwright, sync_playwright, expect
 
+in_seconds = 1000
+
 # adds in audio controls
 def run(playwright: Playwright) -> None:
     # browser = playwright.chromium.launch(headless=False, slow_mo=5000)
@@ -30,9 +32,15 @@ def run(playwright: Playwright) -> None:
     # page.get_by_role("tab", name="Computer Audio").locator("div").click() # Navigates to the Computer Audio tab
     # page.get_by_role("tab", name="Computer Audio").locator("div").click() # Navigates to the Computer Audio tab
     
-    print("Joined audio")
-    page.locator('//*[@id="voip-tab"]/div/button').click(timeout=0) # Joins audio by xpath
+    print("Joining audio...")
+    page.locator('//*[@id="voip-tab"]/div/button').click(timeout=120*in_seconds) # Joins audio by xpath
     # page.get_by_role("button", name="Join Audio by Computer").click() # Joins audio
+    print('Joined audio. I can now hear the screams of terror')
+    
+    Print('Testing audio thing')
+    page.wait_for_timeout(10*in_seconds)
+    # might have a bug where browser has a popup asking for mic usage 
+    # https://playwright.dev/python/docs/dialogs#alert-confirm-prompt-dialogs
     
     print("We just kool aid manned the doors and exited the meeting hehe!!!")
     page.get_by_role("button", name="Leave").click() # Leaves the meeting

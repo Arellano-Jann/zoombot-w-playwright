@@ -1,6 +1,12 @@
 # zoombot-w-playwright
 https://playwright.dev/python/docs/intro
 
+## To add
+1. Time in meeting
+2. Popup handling. Unsure if it ACTUALLY does it or just says it does
+3. Handling polls
+
+
 Ubuntu Setup
 ```bash
 sudo apt update
