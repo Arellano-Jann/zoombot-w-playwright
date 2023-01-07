@@ -56,26 +56,27 @@ def run(playwright: Playwright) -> None:
     page.screenshot(path="screenshots/2.png")
     page.wait_for_load_state() # Don't know why this is here but fuck it we ball
     
+    # Not really sure what this tests for but i'll remove this later? I think it was just to see if the bottom left changed or if something pops up (which it does) or tests for the bug on the bottom which seemingly doesnt happen
     print('Testing audio thing')
     page.screenshot(path="screenshots/3.png")
     page.wait_for_timeout(10*in_seconds) 
     page.screenshot(path="screenshots/4.png")
-    
     # might have a bug where browser has a popup asking for mic usage 
     # https://playwright.dev/python/docs/dialogs#alert-confirm-prompt-dialogs
     
-    ### Meeting
+    ### Meeting. Loop this with inside logic from 3-8
     
     # Time in meeting. Could use this module for logic in leaving the meeting early etc. For example: polls, creating a recording, checking sound.
     print(config.time_in_meeting*in_seconds, ' seconds until leaving the meeting')
     page.wait_for_timeout(config.time_in_meeting*in_seconds) # Time(out) until leaving the meeting executes
     page.screenshot(path="screenshots/5.png")
+    
+    ### Leave the meeting
     print("We just kool aid manned the doors and exited the meeting hehe!!!")
     page.get_by_role("button", name="Leave").click() # Leaves the meeting
     page.screenshot(path="screenshots/6.png")
     page.get_by_role("menuitem", name="Leave Meeting").click() # Confirms the leaving of the meeting
     page.screenshot(path="screenshots/7.png")
-    page.screenshot(path="screenshots/8.png")
     # ---------------------
     context.close()
     browser.close()
