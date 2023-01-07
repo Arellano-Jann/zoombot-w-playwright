@@ -3,7 +3,7 @@ https://playwright.dev/python/docs/intro
 
 ## To add
 1. ~~Time in meeting~~
-2. Popup handling. Unsure if it ACTUALLY does it or just says it does. Screenshot in headless to debug.
+2. ~~Popup handling. Unsure if it ACTUALLY does it or just says it does. Screenshot in headless to debug.~~ I think it handles popups in headless judging from the screenshots
 3. Handling polls
 4. Checking sound (maybe by network) to see if there's people talking
 5. Creating a log of the text chat
@@ -12,8 +12,11 @@ https://playwright.dev/python/docs/intro
 8. Access transcription/log and if name has been said, issue a wakeup call or playa prerecorded "idk"
 9. Waiting room logic
 
+## Known Issues
+1. Link is wonky and has to be fully working/loaded beforehand. I put "#success" at the end of the zoom link to have it automatically loaded. I think it's a memory issue but I believe that the 2 root causes are: auto-downloading the app or a popup (not seen in the screenshots). I'm not really sure but I've tried: `on(download)`, `on(dialog)`, `wait_for_load_state()`, `slow_mo=10000`, `timeout=0` and there still is the horrific never ending loading.
 
-Ubuntu Setup
+
+### Ubuntu Setup
 ```bash
 sudo apt update
 sudo apt install python3-pip
@@ -25,17 +28,18 @@ playwright install
 playwright install-deps
 ```
 
-Running the app
+### Running the app
 ```bash
 # Run app
 python3 zoombot2.py
 ```
 
-Running playwright codegen
+### Running playwright codegen
 ```bash
 # playwright codegen <site>
 playwright codegen https://unr.zoom.us/j/83958869209?uname=Jann+Arellano
 ```
 
+### Other
 WSL2 can run GUI apps natively now according to this https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps
 as long as it's Windows 11 or a high version of Windows 10 + Windows Insider (and updated drivers)

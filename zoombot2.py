@@ -13,15 +13,18 @@ def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
-    
+    page.screenshot(path="screenshots/11.png")
     print('Going to link:', config.meeting_link)
     page.goto(config.meeting_link) # Go to link
     print('Joined from browser and yeeting myself in...')
+    page.screenshot(path="screenshots/12.png")
     page.get_by_role("button", name="Join from Your Browser").click() # Join from browser
+    page.screenshot(path="screenshots/13.png")
     # page.locator('//a[@id="zoom-ui-frame"]/div[2]/div/div[2]/h3[2]/span/a') # ^ Join from browser xpath version
     
     print('Waiting for load state')
     page.wait_for_load_state()
+    page.screenshot(path="screenshots/14.png")
     print('FYI: I put your name as:', config.nameTag)
     page.get_by_placeholder("Your Name").fill(config.nameTag) # Fill name
     
@@ -44,8 +47,11 @@ def run(playwright: Playwright) -> None:
     # xpath = //*[@id="foot-bar"]/div[1]/div[1]
     # selector = #foot-bar > div:nth-child(1) > div:nth-child(1)
     page.screenshot(path="screenshots/1.png")
-    page.locator('//*[@id="voip-tab"]/div/button').click(timeout=120*in_seconds) # Joins audio through big blue button by xpath
+    # page.locator('//*[@id="voip-tab"]/div/button').click(timeout=0*in_seconds) # Joins audio through big blue button by xpath
     # page.get_by_role("button", name="Join Audio by Computer").click() # Joins audio
+    ## Alt option
+    ## page.get_by_role("tablist").get_by_role("button", name="close").press("Tab")
+    ## page.get_by_role("button", name="Join Audio by Computer").press("Enter")
     print('Joined audio. I can now hear the screams of terror')
     page.screenshot(path="screenshots/2.png")
     page.wait_for_load_state() # Don't know why this is here but fuck it we ball
@@ -63,11 +69,13 @@ def run(playwright: Playwright) -> None:
     # Time in meeting. Could use this module for logic in leaving the meeting early etc. For example: polls, creating a recording, checking sound.
     print(config.time_in_meeting*in_seconds, ' seconds until leaving the meeting')
     page.wait_for_timeout(config.time_in_meeting*in_seconds) # Time(out) until leaving the meeting executes
-    
+    page.screenshot(path="screenshots/5.png")
     print("We just kool aid manned the doors and exited the meeting hehe!!!")
     page.get_by_role("button", name="Leave").click() # Leaves the meeting
+    page.screenshot(path="screenshots/6.png")
     page.get_by_role("menuitem", name="Leave Meeting").click() # Confirms the leaving of the meeting
-
+    page.screenshot(path="screenshots/7.png")
+    page.screenshot(path="screenshots/8.png")
     # ---------------------
     context.close()
     browser.close()
