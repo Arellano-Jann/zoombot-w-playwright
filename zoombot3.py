@@ -1,4 +1,4 @@
-# Just a list of the selectors I've been going through per codegen. Not for use as an actual bot.
+# Just a list of the selectors I've been going through per codegen. Not for use as an actual bot. On zoom ofc
 
 from playwright.sync_api import Playwright, sync_playwright, expect
 
