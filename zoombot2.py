@@ -3,6 +3,7 @@
 import config
 import schedule
 from playwright.sync_api import Playwright, sync_playwright, expect
+import time
 
 in_seconds = 1000 # aux variable to convert milli to seconds
 
@@ -82,14 +83,21 @@ def run(playwright: Playwright) -> None:
     context.close()
     browser.close()
 
+def go():
+    with sync_playwright() as playwright:
+        run(playwright)
+    
+# Scheduler Runs on local PC time
+print("Fuck mondays. Garfield hates em.")
+schedule.every().monday.at(config.hour).do(go)
+schedule.every().tuesday.at(config.hour).do(go)
+schedule.every().wednesday.at(config.hour).do(go)
+schedule.every().thursday.at(config.hour).do(go)
+print("Yea wednesdays suck titties too... Slowest trading day of the week ong")
+schedule.every().friday.at(config.hour).do(go)
+schedule.every().saturday.at(config.hour).do(go)
+print("LAST FUCKING TRADING DAY LETS GOOOOOO!!! THE STONKS ONLY GO ^^^^^^^^^^")
 
-with sync_playwright() as playwright:
-    print("Fuck mondays. Garfield hates em.")
-    schedule.every().tuesday.at(config.hour).do(run(playwright))
-    schedule.every().wednesday.at(config.hour).do(run(playwright))
-    schedule.every().thursday.at(config.hour).do(run(playwright))
-    print("Yea wednesdays suck titties too... Slowest trading day of the week ong")
-    schedule.every().friday.at(config.hour).do(run(playwright))
-    schedule.every().saturday.at(config.hour).do(run(playwright))
-    print("LAST FUCKING TRADING DAY LETS GOOOOOO!!! THE STONKS ONLY GO ^^^^^^^^^^")
-    # run(playwright)
+while True:
+    schedule.run_pending()
+    time.sleep(1)
