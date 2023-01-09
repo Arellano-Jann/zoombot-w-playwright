@@ -1,6 +1,6 @@
 # Timezone setup
 # minute = 0 # 00 PST
-hour = "2:00"
+hour = "02:00"
 # days = [0, 2, 4] # Mon, Wed, Fri
 
 # Timing info
