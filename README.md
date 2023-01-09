@@ -24,6 +24,7 @@ sudo apt update
 sudo apt install python3-pip
 git clone https://github.com/Arellano-Jann/zoombot-w-playwright
 pip install pytest-playwright
+pip install schedule
 # export PATH="/home/<name>/.local/bin:$PATH"
 export PATH="/home/jannarellano/.local/bin:$PATH"
 source ~/.bash_profile
@@ -36,7 +37,8 @@ playwright install-deps
 sudo apt update
 sudo apt install python3-pip -y
 git clone https://github.com/Arellano-Jann/zoombot-w-playwright
-pip install pytest-playwright -y
+pip install pytest-playwright
+pip install schedule
 # export PATH="/home/<name>/.local/bin:$PATH"
 export PATH="/home/ubuntu/.local/bin:$PATH"
 source ~/.bash_profile
