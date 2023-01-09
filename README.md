@@ -14,7 +14,7 @@ https://playwright.dev/python/docs/intro
 
 ## Known Issues
 1. Link is wonky and has to be fully working/loaded beforehand. I put "#success" at the end of the zoom link to have it automatically loaded. I think it's a memory issue but I believe that the 2 root causes are: auto-downloading the app or a popup (not seen in the screenshots). I'm not really sure but I've tried: `on(download)`, `on(dialog)`, `wait_for_load_state()`, `slow_mo=10000`, `timeout=0` and there still is the horrific never ending loading.
-2. Unable to run on standard Amazon Linux EC2 instance right now. Potential fix is to use a docker image instead to bundle everthing up nicely.
+2. ~~Unable to run on standard Amazon Linux EC2 instance right now. Potential fix is to use a docker image instead to bundle everthing up nicely.~~ Will not fix this as running docker on Linux EC2 is a piece of work when you can just spin up a Ubuntu instance.
 
 ## Setup
 
@@ -44,7 +44,7 @@ playwright install
 playwright install-deps
 ```
 
-### EC2 Amazon Linux Setup
+### ~~EC2 Amazon Linux Setup~~ Deprecated. Too much effort.
 ```bash
 sudo yum -y install git
 git clone https://github.com/Arellano-Jann/zoombot-w-playwright
