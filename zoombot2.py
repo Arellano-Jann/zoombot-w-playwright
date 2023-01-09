@@ -67,7 +67,7 @@ def run(playwright: Playwright) -> None:
     ### Meeting. Loop this with inside logic from 3-8
     
     # Time in meeting. Could use this module for logic in leaving the meeting early etc. For example: polls, creating a recording, checking sound.
-    print(config.time_in_meeting*in_seconds, ' seconds until leaving the meeting')
+    print(config.time_in_meeting, ' seconds until leaving the meeting')
     page.wait_for_timeout(config.time_in_meeting*in_seconds) # Time(out) until leaving the meeting executes
     page.screenshot(path="screenshots/5.png")
     

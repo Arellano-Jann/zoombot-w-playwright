@@ -14,12 +14,15 @@ https://playwright.dev/python/docs/intro
 
 ## Known Issues
 1. Link is wonky and has to be fully working/loaded beforehand. I put "#success" at the end of the zoom link to have it automatically loaded. I think it's a memory issue but I believe that the 2 root causes are: auto-downloading the app or a popup (not seen in the screenshots). I'm not really sure but I've tried: `on(download)`, `on(dialog)`, `wait_for_load_state()`, `slow_mo=10000`, `timeout=0` and there still is the horrific never ending loading.
+2. Unable to run on standard Amazon Linux EC2 instance right now. Potential fix is to use a docker image instead to bundle everthing up nicely.
 
+## Setup
 
 ### Ubuntu Setup
 ```bash
 sudo apt update
 sudo apt install python3-pip
+git clone https://github.com/Arellano-Jann/zoombot-w-playwright
 pip install pytest-playwright
 # export PATH="/home/<name>/.local/bin:$PATH"
 export PATH="/home/jannarellano/.local/bin:$PATH"
@@ -28,9 +31,34 @@ playwright install
 playwright install-deps
 ```
 
+### EC2 Ubuntu Setup
+```bash
+sudo apt update
+sudo apt install python3-pip -y
+git clone https://github.com/Arellano-Jann/zoombot-w-playwright
+pip install pytest-playwright -y
+# export PATH="/home/<name>/.local/bin:$PATH"
+export PATH="/home/ubuntu/.local/bin:$PATH"
+source ~/.bash_profile
+playwright install
+playwright install-deps
+```
+
+### EC2 Amazon Linux Setup
+```bash
+sudo yum -y install git
+git clone https://github.com/Arellano-Jann/zoombot-w-playwright
+pip3 install playwright
+playwright install
+# export PATH="/home/jannarellano/.local/bin:$PATH"
+# source ~/.bash_profile
+playwright install-deps
+```
+
 ### Running the app
 ```bash
 # Run app
+cd zoombot-w-playwright
 python3 zoombot2.py
 ```
 
@@ -40,6 +68,8 @@ python3 zoombot2.py
 playwright codegen https://unr.zoom.us/j/83958869209?uname=Jann+Arellano
 ```
 
-### Other
+
+
+## Other Notes
 WSL2 can run GUI apps natively now according to this https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps
 as long as it's Windows 11 or a high version of Windows 10 + Windows Insider (and updated drivers)
