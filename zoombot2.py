@@ -1,6 +1,7 @@
 # Main Script
 
 import config
+import schedule
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 in_seconds = 1000 # aux variable to convert milli to seconds
@@ -83,4 +84,12 @@ def run(playwright: Playwright) -> None:
 
 
 with sync_playwright() as playwright:
-    run(playwright)
+    print("Fuck mondays. Garfield hates em.")
+    schedule.every().tuesday.at(config.hour).do(run(playwright))
+    schedule.every().wednesday.at(config.hour).do(run(playwright))
+    schedule.every().thursday.at(config.hour).do(run(playwright))
+    print("Yea wednesdays suck titties too... Slowest trading day of the week ong")
+    schedule.every().friday.at(config.hour).do(run(playwright))
+    schedule.every().saturday.at(config.hour).do(run(playwright))
+    print("LAST FUCKING TRADING DAY LETS GOOOOOO!!! THE STONKS ONLY GO ^^^^^^^^^^")
+    # run(playwright)
