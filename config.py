@@ -10,9 +10,9 @@ time_in_meeting = 60*1.75*60 # 60 min * 1.75 hours * 60 seconds
 # time_in_meeting = 5 # in seconds
 
 # Links
-meeting_link = "https://tmcc-edu.zoom.us/j/5867770981#success" # test link, note that '#success' skips the download and popup. i don't know how to get past this without a link redirect
+# meeting_link = "https://tmcc-edu.zoom.us/j/5867770981#success" # test link, note that '#success' skips the download and popup. i don't know how to get past this without a link redirect
 # meeting_link = "https://talentsprint.zoom.us/wc/join/88691885316#success"
-# meeting_link = "https://unr.zoom.us/j/83958869209#success" # 365
+meeting_link = "https://unr.zoom.us/j/83958869209#success" # 365
 
 # Login Info
 nameTag = "Jann Arellano"
