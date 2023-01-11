@@ -64,7 +64,7 @@ playwright install-deps
 cd zoombot-w-playwright
 python3 zoombot2.py
 # in ec2, constantly
-nohup `python3 zoombot2.py` &
+nohup `python3 zoombot2.py` # add "&" to the end to get back the terminal
 ```
 
 ### Running playwright codegen
