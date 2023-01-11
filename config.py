@@ -1,7 +1,7 @@
 # Timezone setup
 # minute = 0 # 00 PST
 # hour = "18:00" # in "12:34" format in UTC for AWS Ubuntu
-hour = "13:20" # in "12:34" format in UTC for AWS Ubuntu
+hour = "13:23" # in "12:34" format in UTC for AWS Ubuntu
 # days = [0, 2, 4] # Mon, Wed, Fri
 
 # Timing info
