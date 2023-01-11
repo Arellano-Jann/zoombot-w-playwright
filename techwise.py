@@ -66,7 +66,8 @@ def run(playwright: Playwright) -> None:
     # might have a bug where browser has a popup asking for mic usage 
     # https://playwright.dev/python/docs/dialogs#alert-confirm-prompt-dialogs
     
-    ### Meeting. Loop this with inside logic from 3-8
+    ### Meeting. Loop this with inside logic from 3-8.
+    ### Join Breakout room here after 20 minutes of waiting (to avoid the error where breakout isnt open yet :clown:)
     
     # Time in meeting. Could use this module for logic in leaving the meeting early etc. For example: polls, creating a recording, checking sound.
     print(config.time_in_meeting, ' seconds until leaving the meeting')

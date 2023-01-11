@@ -11,6 +11,7 @@ https://playwright.dev/python/docs/intro
 7. I wonder if you can record in headless. I don't think so though. Counter to this is to take a screenshot every few seconds and play those images in sequential order. Put it into a folder of course.x
 8. Access transcription/log and if name has been said, issue a wakeup call or playa prerecorded "idk"
 9. Waiting room logic
+10. Join Zoom Breakout room - do this by tuesday or tomorrow morning
 
 ## Known Issues
 1. Link is wonky and has to be fully working/loaded beforehand. I put "#success" at the end of the zoom link to have it automatically loaded. I think it's a memory issue but I believe that the 2 root causes are: auto-downloading the app or a popup (not seen in the screenshots). I'm not really sure but I've tried: `on(download)`, `on(dialog)`, `wait_for_load_state()`, `slow_mo=10000`, `timeout=0` and there still is the horrific never ending loading.
