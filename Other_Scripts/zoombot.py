@@ -16,7 +16,7 @@ def run(playwright: Playwright) -> None:
     page.get_by_placeholder("Your Name").fill("Jann Arellano") # Fill in name
     page.get_by_role("button", name="Join").click() # Join session
     
-    page.wait_for_timeout(5000) # Time in meeting (in milliseconds)
+    page.wait_for_timeout(310000) # Time in meeting (in milliseconds)
 
     # ---------------------
     context.close()
