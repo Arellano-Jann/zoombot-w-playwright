@@ -63,6 +63,8 @@ playwright install-deps
 # Run app
 cd zoombot-w-playwright
 python3 zoombot2.py
+# in ec2, constantly
+nohup `python3 zoombot2.py` &
 ```
 
 ### Running playwright codegen
