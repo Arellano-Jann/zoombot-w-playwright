@@ -1,9 +1,7 @@
 # Main Script
 
 import config
-import schedule
 from playwright.sync_api import Playwright, sync_playwright, expect
-import time
 
 in_seconds = 1000 # aux variable to convert milli to seconds
 
@@ -20,6 +18,7 @@ def run(playwright: Playwright) -> None:
     page.goto(config.meeting_link) # Go to link
     print('Joined from browser and yeeting myself in...')
     page.screenshot(path="screenshots/12.png")
+    page.wait_for_load_state()
     page.get_by_role("button", name="Join from Your Browser").click() # Join from browser
     page.screenshot(path="screenshots/13.png")
     # page.locator('//a[@id="zoom-ui-frame"]/div[2]/div/div[2]/h3[2]/span/a') # ^ Join from browser xpath version
@@ -66,8 +65,10 @@ def run(playwright: Playwright) -> None:
     # might have a bug where browser has a popup asking for mic usage 
     # https://playwright.dev/python/docs/dialogs#alert-confirm-prompt-dialogs
     
-    ### Meeting. Loop this with inside logic from 3-8.
-    ### Join Breakout room here after 20 minutes of waiting (to avoid the error where breakout isnt open yet :clown:)
+    ### Meeting. Loop this with inside logic from 3-8
+    
+    # Join Breakout room here after 20 minutes of waiting (to avoid the error where breakout isnt open yet :clown:)
+    
     
     # Time in meeting. Could use this module for logic in leaving the meeting early etc. For example: polls, creating a recording, checking sound.
     print(config.time_in_meeting, ' seconds until leaving the meeting')
@@ -88,17 +89,4 @@ def go():
     with sync_playwright() as playwright:
         run(playwright)
     
-# Scheduler Runs on local PC time
-print("Fuck mondays. Garfield hates em.")
-schedule.every().monday.at(config.hour).do(go)
-schedule.every().tuesday.at(config.hour).do(go)
-schedule.every().wednesday.at(config.hour).do(go)
-schedule.every().thursday.at(config.hour).do(go)
-print("Yea wednesdays suck titties too... Slowest trading day of the week ong")
-schedule.every().friday.at(config.hour).do(go)
-# schedule.every().saturday.at(config.hour).do(go)
-print("LAST FUCKING TRADING DAY LETS GOOOOOO!!! THE STONKS ONLY GO ^^^^^^^^^^")
-
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+go()

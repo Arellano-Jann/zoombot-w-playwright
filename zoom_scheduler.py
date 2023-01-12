@@ -1,4 +1,5 @@
-import zoombot2
+import techwise
+# import zoombot2
 import schedule
 import time
 
