@@ -74,7 +74,7 @@ nohup `python3 ~/zoombot-w-playwright/zoom_scheduler.py` # add "&" to the end to
 # cron  
 sudo service cron start
 crontab -e
-0 10 * * 1-5 python3 ~/zoombot-w-playwright/zoombot2.py
+0 18 * * 1-5 python3 ~/zoombot-w-playwright/zoombot2.py
 # Enter, CTRL X, Y, Enter
 ```
 
